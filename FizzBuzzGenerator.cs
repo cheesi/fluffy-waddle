@@ -68,3 +68,16 @@ public static class RepositoryGenerator
         return int.Parse((string)row["expression"]).ToDatabaseObject();
     }
 }
+
+/*
+ * Retro
+ * Good parts:
+ *  - we had fun
+ *  - tests are green :)
+ *  - learned a little bit of c# (which is c -> c++ -> c#)
+ * Bad Parts:
+ *  - no real eval in C# :(
+ *  - database connection not yet configured
+ *
+ *  Follow up: https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition
+ */
