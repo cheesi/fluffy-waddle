@@ -34,15 +34,13 @@ public static class RepositoryGenerator
             {
                 return Comperator.Get();
             }
-            else
-            {
-                return id.ToString();
-            }
         }
         catch (Exception ex)
         {
             return ex.Message;
         }
+
+        return id.ToString();
 
     end_of_loop:
         return $"{comperator.GetComperator()}{Value}";
