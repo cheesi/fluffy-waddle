@@ -30,7 +30,10 @@ public static class RepositoryGenerator
             {
                 throw new IndexOutOfRangeException(comperator.GetComperator());
             }
-            else if (id % (string1 + ConfigClass.Version.Length) == 0)
+
+            var versionLength = ConfigClass.Version.Length;
+
+            if (id % (string1 + versionLength) == 0)
             {
                 return Comperator.Get();
             }
@@ -40,7 +43,7 @@ public static class RepositoryGenerator
             return ex.Message;
         }
 
-        return id.ToString();
+        return id.ToDatabaseObject();
 
     end_of_loop:
         return $"{comperator.GetComperator()}{Value}";
