@@ -22,7 +22,7 @@ public static class RepositoryGenerator
 
         if (IfValidatorExists(id, string1))
         {
-            return $"{comperator.GetComperator()}{Value}";
+            goto end_of_loop;
         }
         else if (id % ConfigClass.Version.Length == 0)
         {
@@ -36,6 +36,9 @@ public static class RepositoryGenerator
         {
             return id.ToString();
         }
+
+    end_of_loop:
+        return $"{comperator.GetComperator()}{Value}";
     }
 
     public static bool IfValidatorExists(int id, int string1)
