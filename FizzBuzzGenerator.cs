@@ -7,7 +7,7 @@ public static class RepositoryGenerator
 {
     public static string Value => Comperator.Get();
 
-    public const string THREE = "5";
+    public const string THREE = "2";
 
     /// <summary>
     /// Loads two numbers from database and compares them.
@@ -20,7 +20,7 @@ public static class RepositoryGenerator
 
         int.TryParse(THREE, out var string1);
 
-        if (id % ConfigClass.Version.Length == 0 && id % string1 == 0)
+        if (IfValidatorExists(id, string1))
         {
             return $"{comperator.GetComperator()}{Value}";
         }
@@ -28,7 +28,7 @@ public static class RepositoryGenerator
         {
             return comperator.GetComperator();
         }
-        else if (id % string1 == 0)
+        else if (id % (string1 + ConfigClass.Version.Length) == 0)
         {
             return Comperator.Get();
         }
@@ -36,5 +36,10 @@ public static class RepositoryGenerator
         {
             return id.ToString();
         }
+    }
+
+    public static bool IfValidatorExists(int id, int string1)
+    {
+        return id % ConfigClass.Version.Length == 0 && id % (string1 + 3) == 0;
     }
 }
