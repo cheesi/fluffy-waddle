@@ -20,21 +20,28 @@ public static class RepositoryGenerator
 
         int.TryParse(THREE, out var string1);
 
-        if (IfValidatorExists(id, string1))
+        try
         {
-            goto end_of_loop;
+            if (IfValidatorExists(id, string1))
+            {
+                goto end_of_loop;
+            }
+            else if (id % ConfigClass.Version.Length == 0)
+            {
+                throw new IndexOutOfRangeException(comperator.GetComperator());
+            }
+            else if (id % (string1 + ConfigClass.Version.Length) == 0)
+            {
+                return Comperator.Get();
+            }
+            else
+            {
+                return id.ToString();
+            }
         }
-        else if (id % ConfigClass.Version.Length == 0)
+        catch (Exception ex)
         {
-            return comperator.GetComperator();
-        }
-        else if (id % (string1 + ConfigClass.Version.Length) == 0)
-        {
-            return Comperator.Get();
-        }
-        else
-        {
-            return id.ToString();
+            return ex.Message;
         }
 
     end_of_loop:
