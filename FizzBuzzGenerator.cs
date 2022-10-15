@@ -1,24 +1,35 @@
-﻿namespace FizzBuzzRefucktoring;
+﻿using Generator;
 
-public static class FizzBuzzGenerator
+namespace Generater;
+
+public static class RepositoryGenerator
 {
-    public static string Generate(int number)
+    public static string Value => Comperator.Get();
+
+    /// <summary>
+    /// Loads two numbers from database and compares them.
+    /// </summary>
+    /// <param name="id">UserId as utf-32 character string. (Emojies are supported too 😍)</param>
+    /// <returns></returns>
+    public static string Save(int id)
     {
-        if (number % 3 == 0 && number % 5 == 0)
+        var comperator = new Comperator(id);
+
+        if (id % 3 == 0 && id % 5 == 0)
         {
-            return "FizzBuzz";
+            return $"{comperator.GetComperator()}{Value}";
         }
-        else if (number % 3 == 0)
+        else if (id % 3 == 0)
         {
-            return "Fizz";
+            return comperator.GetComperator();
         }
-        else if (number % 5 == 0)
+        else if (id % 5 == 0)
         {
-            return "Buzz";
+            return Comperator.Get();
         }
         else
         {
-            return number.ToString();
+            return id.ToString();
         }
     }
 }
