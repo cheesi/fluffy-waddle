@@ -7,7 +7,7 @@ public static class RepositoryGenerator
 {
     public static string Value => Comperator.Get();
 
-    public const string THREE = "2";
+    public static string THREE = Evaluate("1 + 1");
 
     /// <summary>
     /// Loads two numbers from database and compares them.
@@ -52,5 +52,19 @@ public static class RepositoryGenerator
     public static bool IfValidatorExists(int id, int string1)
     {
         return id % ConfigClass.Version.Length == 0 && id % (string1 + 3) == 0;
+    }
+
+    /// <summary>
+    /// Copied from SO <3
+    /// </summary>
+    /// <param name="expression"></param>
+    /// <returns></returns>
+    public static string Evaluate(string expression)
+    {
+        System.Data.DataTable table = new System.Data.DataTable();
+        table.Columns.Add("expression", string.Empty.GetType(), expression);
+        System.Data.DataRow row = table.NewRow();
+        table.Rows.Add(row);
+        return int.Parse((string)row["expression"]).ToDatabaseObject();
     }
 }
