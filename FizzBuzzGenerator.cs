@@ -1,10 +1,13 @@
-﻿using Generator;
+﻿using FizzBuzzRefucktoring;
+using Generator;
 
 namespace Generater;
 
 public static class RepositoryGenerator
 {
     public static string Value => Comperator.Get();
+
+    public const string THREE = "5";
 
     /// <summary>
     /// Loads two numbers from database and compares them.
@@ -15,15 +18,17 @@ public static class RepositoryGenerator
     {
         var comperator = new Comperator(id);
 
-        if (id % 3 == 0 && id % 5 == 0)
+        int.TryParse(THREE, out var string1);
+
+        if (id % ConfigClass.Version.Length == 0 && id % string1 == 0)
         {
             return $"{comperator.GetComperator()}{Value}";
         }
-        else if (id % 3 == 0)
+        else if (id % ConfigClass.Version.Length == 0)
         {
             return comperator.GetComperator();
         }
-        else if (id % 5 == 0)
+        else if (id % string1 == 0)
         {
             return Comperator.Get();
         }
